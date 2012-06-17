@@ -83,8 +83,9 @@ window.addEventListener("DOMContentLoaded", function(){
 		item.note = ["Notes", elId("notes").value];
 	
 		//Save data into Local Storage: stringify to convert object to string
-		localStorage.setItem(id, JSON.stringify(item));
+		localStorage.setItem(id, JSON.stringify(item));		
 		alert("Task Saved!");
+		window.location.reload();
 	}
 	
 	
@@ -92,7 +93,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	var getData = function () {
 		toggleContr("on");
 		if(localStorage.length === 0) {
-			alert("There is no data in storage.");
+			alert("There is no data in storage. Default data has been added.");
+			autoFillData();
 			}
 			
 		//Write data from local storage to browser
@@ -119,7 +121,15 @@ window.addEventListener("DOMContentLoaded", function(){
 			makeSubLi.innerHTML = optSubText;
 			makeSubList.appendChild(linksLi);
 			}
-			makeItemLinks(localStorage.key(i), linksLi); //Create. edit and delete buttons for items in local storage
+			makeItemLinks(localStorage.key(i), linksLi); //Create edit and delete buttons for items in local storage
+		}
+	}
+	
+	var autoFillData = function () {
+		//JSON object comes from json.js, storing it in local storage.
+		for(var n in json){
+			var id = Math.floor(Math.random()*10000000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
 		}
 	}
 	//Make edit and delete buttons for each stored item
@@ -163,13 +173,13 @@ window.addEventListener("DOMContentLoaded", function(){
 		elId("taskEnd").value = item.ending[1];
 		elId("alertWay").value = item.alertOption[1];
 		elId("notes").value = item.note[1];
-		if(item.category[1] == "home") {
+		if(item.category[1] == "Home") {
 			elId("home").setAttribute("checked", "checked");
 			}
-		if(item.category[1] == "business") {
+		if(item.category[1] == "Business") {
 			elId("business").setAttribute("checked", "checked");
 					}
-		if(item.category[1] == "school") {
+		if(item.category[1] == "School") {
 			elId("school").setAttribute("checked", "checked");
 					}
 		
