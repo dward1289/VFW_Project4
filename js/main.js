@@ -101,11 +101,13 @@ window.addEventListener("DOMContentLoaded", function(){
 		var makeDiv = document.createElement("div");
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement("ul");
+		makeList.setAttribute("id", "wholeList");
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
-		elId("items").style.display = "block"
+		elId("items").style = "block"
 		for(var i=0, len=localStorage.length; i<len; i++) {
 			var makeLi = document.createElement("li");
+			makeLi.setAttribute("id", "listing");
 			var linksLi = document.createElement("li");
 			makeList.appendChild(makeLi);
 			var key = localStorage.key(i);
@@ -122,9 +124,11 @@ window.addEventListener("DOMContentLoaded", function(){
 				var optSubText = obj[r][0]+" "+obj[r][1];
 				makeSubLi.innerHTML = optSubText;
 				makeSubList.appendChild(linksLi);
+				
 				}
 				
-				makeItemLinks(localStorage.key(i), linksLi); //Create edit and delete buttons for items in local storage
+				//Create edit and delete buttons for items in local storage
+				makeItemLinks(localStorage.key(i), linksLi); 
 		}
 	}
 	
@@ -136,6 +140,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var setSrc = newImg.setAttribute("src", "images/"+ catName + ".png");
 		imgLi.appendChild(newImg);
 	}
+	
 	var autoFillData = function () {
 		//JSON object comes from json.js, storing it in local storage.
 		for(var n in json){
@@ -143,6 +148,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			localStorage.setItem(id, JSON.stringify(json[n]));
 		}
 	}
+	
 	//Make edit and delete buttons for each stored item
 	var makeItemLinks = function (key, linksLi) {
 		//add edit single item link
@@ -207,6 +213,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		editSubmit.addEventListener("click", validate);
 		editSubmit.key = this.key;
 	}
+	
 	var validate = function (e) {
 		//Define elements
 		var getPriority = elId("priorities");
@@ -277,6 +284,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			return false;
 		}
 	}
+	
 	var clearLocal = function () {
 		if(localStorage.length === 0){
 			alert("There is no data to clear.")

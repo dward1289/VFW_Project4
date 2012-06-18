@@ -34,35 +34,44 @@ p{
 /*Name of Task*/
 ul.nOT{
 	font-family:Tahoma, Geneva, sans-serif;
+	background: none;
 	}
 	
 /*Category Checkboxes*/
 ul.checkBoxes{
 	font-family:Tahoma, Geneva, sans-serif;
+	background: none;
     }
     
 /*Date Selections*/    
 ul.dateSelects{
 	font-family:Tahoma, Geneva, sans-serif;
+	background: none;
 	}
 	
 /*Priority Levels*/
 ul.pWord{
 	font-family:Tahoma, Geneva, sans-serif;
+	background: none;
 	}
 	
 /*Alert Options 1-3 and Note*/
 ul.alertNote{
 	font-family:Tahoma, Geneva, sans-serif;
+	background: none;
 	}
+	
+
 	
 /*Notes*/	
 li.noteWord{
 	padding-top:10px;
+	background: none;
 	}
 	
 li{
 	display:block;
+	margin-bottom: 10px;	
 	}
 
 legend.field{
@@ -84,7 +93,21 @@ input.bar{
 #addAnother{
 	text-decoration:none;
 	}
-	
+
+/*Display Task list*/
+#listing{
+	font-family:Tahoma, Geneva, sans-serif;
+	border-style:ridge;
+	margin-left: -40px;
+	background: #FAFAFA
+	}	
+
+/*Display Task list images*/
+img{
+	margin-top: 10px;
+		}
+
+
 
 
 
